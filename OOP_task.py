@@ -12,7 +12,7 @@ def formating(x):
 
 def createId():
     result = time.localtime(int(randint(100000000, 1664817163)))
-    id = formating(result.tm_year) + formating(result.tm_mon) + formating(result.tm_mday) + formating(result.tm_hour) + formating(result.tm_min) + formating(result.tm_sec) + str(randint( 100000 , 999999))
+    id = formating(result.tm_year) + formating(result.tm_mon) + formating(result.tm_mday) + formating(result.tm_hour) + formating(result.tm_min) + formating(result.tm_sec) + str(randint( 0 , 999999)).zfill(6)
     return id
 
 # Declaring classes
