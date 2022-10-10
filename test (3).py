@@ -124,19 +124,6 @@ class Bag :
         self.setData(prodacts)
         self.setData(prodacts)
 
-    def __str__(self):
-        if len(self.__products) == 0 :
-            print ("There are no products in the basket !!!")
-        else :
-            print( f"\nA receipt in the name of {self.client[0]}  {self.client[1]} :\n" )
-            for i in range(len(self.__products)):
-                print(f"# {i+1}) {self.__products[i]} : {self.__id[i]} ;")
-            print(f"# Total cost of the order = {self.__cost}")
-
-
-    def __repr__(self):
-        return self.__str__()
-
     def getId(self):
         return self.__id
     
@@ -156,25 +143,25 @@ class Bag :
                 if list_prodacts[i] == menu[j].name :
                     self.__products.append( menu[j].name )
                     self.__id.append( menu[j].id )
-                    self.__cost += menu[j].setPrice()
+                    self.__cost += menu[j].getPrice()
+
+    def printBasket(self):
+        print( f"\nA receipt in the name of {basket.client[0]} {basket.client[1]} :\n" )
+        for i in range(len(basket.getProducts())):
+            print(f"# {i+1}) {basket.getProducts()[i]} : {basket.getId()[i]} ;\n")
+        print(f"# Total cost of the order = {basket.getCost()}")
 
 ##########################################################################################################################################################################
 
 clear()
-
 menu = createMenu()
-
 name = input ("Enter your fullname : ")
 print()
 adress = input ("Enter your address : ")
-
 clear() 
-
 p1 = Client( name , adress )
 print(p1)
-
 printMenu(menu)
-
 prodacts = str(input("Keep the products you want to fill the basket with :"))
-
-Bag(prodacts)
+basket = Bag(prodacts)
+basket.printBasket()
